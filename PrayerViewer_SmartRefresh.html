@@ -133,13 +133,19 @@
       }, 300);
 
       setTimeout(async () => {
-        loopCount++;
-        loopIndicator.textContent = "Loop: " + loopCount;
+        const previousLength = submissions.length;
 
-        // Always fetch fresh list
         const newData = await fetchSubmissions();
         if (newData && Array.isArray(newData)) {
           submissions = newData;
+
+          if (newData.length === previousLength) {
+            loopCount++;
+            loopIndicator.textContent = "Loop: " + loopCount;
+          } else {
+            loopIndicator.textContent = "Loop reset (new entries)";
+            loopCount = 0;
+          }
         }
 
         currentIndex = 0;
@@ -160,6 +166,7 @@
     }
   })();
 </script>
+
 
 </body>
 </html>
