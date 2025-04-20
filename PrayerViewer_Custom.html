@@ -63,8 +63,8 @@
     const mobileLoopFontSize = "3vw";
     const mobileLogoMaxHeight = "10vh";
     const mobileLogoMaxWidth = "25vw";
-    const mobileLoopPosition = { bottom: "1vw", right: "1vw" };
-    const mobileLogoPosition = { bottom: "1vw", left: "1vw" };
+    const mobileLoopPosition = { bottom: "1vw", left: "50%", transform: "translateX(-50%)" };
+    const mobileLogoPosition = { top: "1vw", left: "50%", transform: "translateX(-50%)" };
   </script>
 
   <style>
@@ -226,7 +226,6 @@
         logo.style.display = "none";
       }
 
-      // Add mobile-specific styles
       const mobileCSS = `
         @media screen and (max-width: ${mobileBreakPoint}) {
           .card { padding: 5vw; }
@@ -241,7 +240,8 @@
           #loopIndicator {
             font-size: ${mobileLoopFontSize} !important;
             bottom: ${mobileLoopPosition.bottom};
-            right: ${mobileLoopPosition.right};
+            left: ${mobileLoopPosition.left};
+            transform: ${mobileLoopPosition.transform};
             z-index: 2;
             background: rgba(0, 0, 0, 0.4);
             padding: 0.5vw;
@@ -250,8 +250,9 @@
           #churchLogo {
             max-height: ${mobileLogoMaxHeight};
             max-width: ${mobileLogoMaxWidth};
-            bottom: ${mobileLogoPosition.bottom};
+            top: ${mobileLogoPosition.top};
             left: ${mobileLogoPosition.left};
+            transform: ${mobileLogoPosition.transform};
             z-index: 2;
           }
         }`;
