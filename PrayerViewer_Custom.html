@@ -53,6 +53,18 @@
     // Closing message
     const closingMessage = "Thank you for lifting them up in prayer...";
     const closingScripture = '"Pray without ceasing.<br>1 Thess. 5:17"';
+
+    // 📱 Mobile Overrides
+    const mobileBreakPoint = "768px";
+    const mobileTitleFontSize = "8vw";
+    const mobileTitleSpacing = "8vw";
+    const mobileEntryFontSize = "7vw";
+    const mobileEntryPadding = "4vw";
+    const mobileLoopFontSize = "3vw";
+    const mobileLogoMaxHeight = "12vh";
+    const mobileLogoMaxWidth = "30vw";
+    const mobileLoopPosition = { bottom: "2vw", right: "3vw" };
+    const mobileLogoPosition = { bottom: "2vw", left: "3vw" };
   </script>
 
   <style>
@@ -79,7 +91,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 4vw;
+      padding: 3vw;
     }
 
     .text-box {
@@ -180,43 +192,64 @@
       viewerTitleElement.textContent = viewerTitle;
       card.style.backgroundImage = `url('${backgroundImageUrl}')`;
 
-      // Apply title styles
       viewerTitleElement.style.fontSize = titleFontSize;
       viewerTitleElement.style.marginBottom = titleSpacing;
       Object.assign(viewerTitleElement.style, titleFontStyle);
-
-      // Apply entry styles
       Object.assign(viewerName.style, entryFontStyle);
       Object.assign(viewerSelection.style, entryFontStyle);
       viewerName.style.fontSize = entryFontSize;
       viewerSelection.style.fontSize = entryFontSize;
-
-      // Apply loop styles
       Object.assign(loopIndicator.style, loopFontStyle);
       loopIndicator.style.fontSize = loopFontSize;
       loopIndicator.style.bottom = loopPosition.bottom;
       loopIndicator.style.right = loopPosition.right;
 
-      // Apply logo styles
       logo.style.maxHeight = logoMaxHeight;
       logo.style.maxWidth = logoMaxWidth;
       logo.style.bottom = logoPosition.bottom;
       logo.style.left = logoPosition.left;
 
-      // Text box shared styling
       const textBoxes = document.querySelectorAll(".text-box");
       textBoxes.forEach(el => {
         el.style.background = textBoxBgColor;
         el.style.textShadow = `2px 2px 8px ${textShadowColor}`;
       });
 
-      // Logo
       if (logoImageUrl && logoImageUrl !== "YOUR_LOGO_IMAGE_URL_HERE") {
         logo.src = logoImageUrl;
         logo.style.display = "block";
       } else {
         logo.style.display = "none";
       }
+
+      // Add mobile-specific styles
+      const mobileCSS = `
+        @media screen and (max-width: ${mobileBreakPoint}) {
+          .card { padding: 5vw; }
+          .text-box {
+            font-size: ${mobileEntryFontSize};
+            padding: ${mobileEntryPadding};
+          }
+          #viewerTitle {
+            font-size: ${mobileTitleFontSize} !important;
+            margin-bottom: ${mobileTitleSpacing} !important;
+          }
+          #loopIndicator {
+            font-size: ${mobileLoopFontSize} !important;
+            bottom: ${mobileLoopPosition.bottom};
+            right: ${mobileLoopPosition.right};
+          }
+          #churchLogo {
+            max-height: ${mobileLogoMaxHeight};
+            max-width: ${mobileLogoMaxWidth};
+            bottom: ${mobileLogoPosition.bottom};
+            left: ${mobileLogoPosition.left};
+          }
+        }`;
+
+      const styleSheet = document.createElement('style');
+      styleSheet.innerText = mobileCSS;
+      document.head.appendChild(styleSheet);
 
       const initialData = await fetchSubmissions();
       if (initialData) {
