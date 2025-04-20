@@ -63,8 +63,8 @@
     const mobileLoopFontSize = "3vw";
     const mobileLogoMaxHeight = "10vh";
     const mobileLogoMaxWidth = "25vw";
-    const mobileLoopPosition = { bottom: "1vw", left: "50%", transform: "translateX(-50%)" };
-    const mobileLogoPosition = { top: "1vw", left: "50%", transform: "translateX(-50%)" };
+    const mobileLoopPosition = {position: "absolute", bottom: "1vw", left: "50%", transform: "translateX(-50%)"};
+    const mobileLogoPosition = {position: "absolute", top: "1vw", left: "50%", transform: "translateX(-50%)"};
   </script>
 
   <style>
@@ -239,6 +239,7 @@
           }
           #loopIndicator {
             font-size: ${mobileLoopFontSize} !important;
+            position: ${mobileLoopPosition.position};
             bottom: ${mobileLoopPosition.bottom};
             left: ${mobileLoopPosition.left};
             transform: ${mobileLoopPosition.transform};
@@ -250,6 +251,7 @@
           #churchLogo {
             max-height: ${mobileLogoMaxHeight};
             max-width: ${mobileLogoMaxWidth};
+            position: ${mobileLogoPosition.position};
             top: ${mobileLogoPosition.top};
             left: ${mobileLogoPosition.left};
             transform: ${mobileLogoPosition.transform};
