@@ -1,6 +1,6 @@
 # 🙏 PrayerViewer Setup Guide
 
-Welcome to **PrayerViewer** — a fully customizable, mobile-friendly prayer request display system designed for churches and ministries. This guide will walk you through setting up and personalizing your own viewer using a Google Sheet and this HTML file.
+Welcome to PrayerViewer — a fully customizable, mobile-friendly prayer request display system built for churches and ministries. This guide walks you through setting up and personalizing your viewer to display submissions collected through a Google Form, stored in a linked Google Sheet, and presented using a responsive HTML file.
 
 ---
 
