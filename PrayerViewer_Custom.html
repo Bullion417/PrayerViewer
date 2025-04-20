@@ -14,19 +14,43 @@
     const dataSourceUrl = "https://script.google.com/macros/s/AKfycbx65mEYEkU4YVw9amm3zWLtI8D811LoDhBrqtf3bHZsAtlhMWfo0GGTJJatrnU9bNNm/exec";
     const logoImageUrl = "https://bullion417.github.io/PrayerViewer/1st%20UPC%20FP%20Logo%20Opt9.png";
 
+    // Font Sizes
     const titleFontSize = "6vw";
     const entryFontSize = "5vw";
-    const titleSpacing = "14vw";
     const loopFontSize = "1vw";
+    const titleSpacing = "14vw";
+
+    // Font Styles
+    const titleFontStyle = {
+      fontFamily: "'Georgia', serif",
+      fontWeight: "bold",
+      fontStyle: "italic",
+      textAlign: "center"
+    };
+    const entryFontStyle = {
+      fontFamily: "Arial, sans-serif",
+      fontWeight: "normal",
+      fontStyle: "normal",
+      textAlign: "center"
+    };
+    const loopFontStyle = {
+      fontFamily: "Courier New, monospace",
+      fontWeight: "normal",
+      fontStyle: "normal",
+      textAlign: "right"
+    };
+
+    // Logo & Position
     const logoMaxHeight = "20vh";
     const logoMaxWidth = "20vw";
-
-    const textShadowColor = "#000";
-    const textBoxBgColor = "rgba(0, 0, 0, 0.7)";
-
     const loopPosition = { bottom: "1vw", right: "2.5vw" };
     const logoPosition = { bottom: "1vw", left: "2.5vw" };
 
+    // Colors
+    const textShadowColor = "#000";
+    const textBoxBgColor = "rgba(0, 0, 0, 0.7)";
+
+    // Closing message
     const closingMessage = "Thank you for lifting them up in prayer...";
     const closingScripture = '"Pray without ceasing.<br>1 Thess. 5:17"';
   </script>
@@ -35,7 +59,6 @@
     body {
       margin: 0;
       background: #000;
-      font-family: Arial, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -60,7 +83,6 @@
     }
 
     .text-box {
-      font-weight: bold;
       display: inline-block;
       box-sizing: border-box;
       margin: 0.5vw 0;
@@ -158,25 +180,37 @@
       viewerTitleElement.textContent = viewerTitle;
       card.style.backgroundImage = `url('${backgroundImageUrl}')`;
 
+      // Apply title styles
       viewerTitleElement.style.fontSize = titleFontSize;
       viewerTitleElement.style.marginBottom = titleSpacing;
+      Object.assign(viewerTitleElement.style, titleFontStyle);
+
+      // Apply entry styles
+      Object.assign(viewerName.style, entryFontStyle);
+      Object.assign(viewerSelection.style, entryFontStyle);
       viewerName.style.fontSize = entryFontSize;
       viewerSelection.style.fontSize = entryFontSize;
+
+      // Apply loop styles
+      Object.assign(loopIndicator.style, loopFontStyle);
       loopIndicator.style.fontSize = loopFontSize;
       loopIndicator.style.bottom = loopPosition.bottom;
       loopIndicator.style.right = loopPosition.right;
 
+      // Apply logo styles
       logo.style.maxHeight = logoMaxHeight;
       logo.style.maxWidth = logoMaxWidth;
       logo.style.bottom = logoPosition.bottom;
       logo.style.left = logoPosition.left;
 
+      // Text box shared styling
       const textBoxes = document.querySelectorAll(".text-box");
       textBoxes.forEach(el => {
         el.style.background = textBoxBgColor;
         el.style.textShadow = `2px 2px 8px ${textShadowColor}`;
       });
 
+      // Logo
       if (logoImageUrl && logoImageUrl !== "YOUR_LOGO_IMAGE_URL_HERE") {
         logo.src = logoImageUrl;
         logo.style.display = "block";
