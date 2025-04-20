@@ -37,7 +37,7 @@
       fontFamily: "Courier New, monospace",
       fontWeight: "normal",
       fontStyle: "normal",
-      textAlign: "right"
+      textAlign: "center"
     };
 
     // Logo & Position
@@ -63,8 +63,18 @@
     const mobileLoopFontSize = "3vw";
     const mobileLogoMaxHeight = "30vh";
     const mobileLogoMaxWidth = "30vw";
-    const mobileLoopPosition = {position: "absolute", bottom: "40vw", left: "50%", transform: "translateX(-50%)"};
-    const mobileLogoPosition = {position: "absolute", top: "10vw", left: "50%", transform: "translateX(-50%)"};
+    const mobileLoopPosition = {
+      position: "absolute",
+      bottom: "40vw",
+      left: "50%",
+      transform: "translateX(-50%)"
+    };
+    const mobileLogoPosition = {
+      position: "absolute",
+      top: "10vw",
+      left: "50%",
+      transform: "translateX(-50%)"
+    };
   </script>
 
   <style>
@@ -108,6 +118,7 @@
       position: absolute;
       color: white;
       z-index: 2;
+      text-align: center;
     }
 
     #churchLogo {
@@ -115,6 +126,9 @@
       object-fit: contain;
       opacity: 0.9;
       z-index: 2;
+      width: auto;
+      max-width: 100%;
+      transition: all 0.4s ease-in-out;
     }
   </style>
 </head>
@@ -247,6 +261,7 @@
             background: rgba(0, 0, 0, 0.4);
             padding: 0.5vw;
             border-radius: 4px;
+            text-align: center;
           }
           #churchLogo {
             max-height: ${mobileLogoMaxHeight} !important;
