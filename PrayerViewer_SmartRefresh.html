@@ -99,25 +99,13 @@ async function fetchSubmissions() {
   try {
     const response = await fetch("https://script.google.com/macros/s/AKfycbx65mEYEkU4YVw9amm3zWLtI8D811LoDhBrqtf3bHZsAtlhMWfo0GGTJJatrnU9bNNm/exec");
     const data = await response.json();
-
-    const adminEntries = [];
-    const regularEntries = [];
-
-    for (let entry of data) {
-      if (!entry.name || !entry.selection) continue; // Skip malformed entries
-      if (!entry.timestamp || entry.timestamp === "") {
-        adminEntries.push(entry);
-      } else {
-        regularEntries.push(entry);
-      }
-    }
-
-    return [...adminEntries, ...regularEntries]; // Admin entries first
+    return data;
   } catch (err) {
     console.error("Fetch error:", err);
     return null;
   }
 }
+
 
   function updateViewer() {
     if (currentIndex < submissions.length) {
