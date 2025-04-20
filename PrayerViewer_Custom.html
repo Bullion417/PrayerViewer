@@ -56,15 +56,15 @@
 
     // 📱 Mobile Overrides
     const mobileBreakPoint = "768px";
-    const mobileTitleFontSize = "8vw";
+    const mobileTitleFontSize = "5.5vw";
     const mobileTitleSpacing = "8vw";
     const mobileEntryFontSize = "7vw";
     const mobileEntryPadding = "4vw";
     const mobileLoopFontSize = "3vw";
-    const mobileLogoMaxHeight = "12vh";
-    const mobileLogoMaxWidth = "30vw";
-    const mobileLoopPosition = { bottom: "2vw", right: "3vw" };
-    const mobileLogoPosition = { bottom: "2vw", left: "3vw" };
+    const mobileLogoMaxHeight = "10vh";
+    const mobileLogoMaxWidth = "25vw";
+    const mobileLoopPosition = { bottom: "1vw", right: "1vw" };
+    const mobileLogoPosition = { bottom: "1vw", left: "1vw" };
   </script>
 
   <style>
@@ -82,6 +82,8 @@
     .card {
       text-align: center;
       background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
       color: white;
       border-radius: 8px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
@@ -105,12 +107,14 @@
     #loopIndicator {
       position: absolute;
       color: white;
+      z-index: 2;
     }
 
     #churchLogo {
       position: absolute;
       object-fit: contain;
       opacity: 0.9;
+      z-index: 2;
     }
   </style>
 </head>
@@ -238,12 +242,17 @@
             font-size: ${mobileLoopFontSize} !important;
             bottom: ${mobileLoopPosition.bottom};
             right: ${mobileLoopPosition.right};
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 0.5vw;
+            border-radius: 4px;
           }
           #churchLogo {
             max-height: ${mobileLogoMaxHeight};
             max-width: ${mobileLogoMaxWidth};
             bottom: ${mobileLogoPosition.bottom};
             left: ${mobileLogoPosition.left};
+            z-index: 2;
           }
         }`;
 
